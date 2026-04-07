@@ -1,7 +1,12 @@
 aid: starwood-hotels-and-resorts
-url: https://raw.githubusercontent.com/api-evangelist/starwood-hotels-and-resorts/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/starwood-hotels-and-resorts/refs/heads/main/apis.yml
 modified: '2026-03-24'
 apis: []
 common:
   - type: Website
     url: https://www.starwood-hotels-and-resorts.com
+description: >-
+  Starwood Hotels & Resorts Worldwide was a global hotel and leisure company with
+  brands including Sheraton, Westin, W Hotels, St. Regis, and Le Méridien before being
+  acquired by Marriott International.
