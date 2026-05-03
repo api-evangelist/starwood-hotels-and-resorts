@@ -1,0 +1,115 @@
+name: Starwood Hotels and Resorts Vocabulary
+description: >-
+  Domain vocabulary for Starwood Hotels & Resorts Worldwide hotel and hospitality
+  operations, property management, and loyalty program concepts.
+version: 1.0.0
+terms:
+  - term: Hotel
+    definition: >-
+      A lodging establishment providing temporary accommodations for travelers, including
+      rooms, suites, and associated amenities and services.
+    related:
+      - Resort
+      - Property
+      - LodgingBusiness
+
+  - term: Resort
+    definition: >-
+      A full-service lodging property that offers extensive amenities, recreational
+      activities, dining, and entertainment in addition to guest rooms.
+    related:
+      - Hotel
+      - Spa
+      - Golf
+
+  - term: Brand
+    definition: >-
+      One of Starwood's distinct hotel brands, each targeting different market segments
+      and guest experiences. Brands include Sheraton, Westin, W Hotels, St. Regis,
+      Le Méridien, Four Points, Aloft, Element, Tribute Portfolio, and Design Hotels.
+    related:
+      - Portfolio
+      - Franchise
+
+  - term: SPG
+    definition: >-
+      Starwood Preferred Guest — the loyalty program operated by Starwood Hotels &
+      Resorts that awarded Starpoints for eligible stays and purchases. Merged into
+      Marriott Bonvoy in 2019 following the Marriott acquisition.
+    related:
+      - Starpoints
+      - Loyalty
+      - MemberStatus
+
+  - term: Starpoints
+    definition: >-
+      The reward currency of the SPG (Starwood Preferred Guest) loyalty program,
+      earned on eligible stays and partner purchases and redeemable for free nights,
+      airline miles, and other rewards.
+    related:
+      - SPG
+      - AwardNight
+      - PointsRedemption
+
+  - term: Category
+    definition: >-
+      The SPG hotel category system (1-7) that determined how many Starpoints were
+      required for a free award night. Category 1 properties required the fewest
+      points while Category 7 (luxury) required the most.
+    related:
+      - SPG
+      - AwardNight
+      - Starpoints
+
+  - term: AwardNight
+    definition: >-
+      A complimentary hotel stay redeemed using SPG Starpoints, with the required
+      points determined by the property's SPG category.
+    related:
+      - Starpoints
+      - Category
+      - Redemption
+
+  - term: BestAvailableRate
+    definition: >-
+      The lowest publicly available rate for a given property on a given night,
+      as determined by Starwood's revenue management system.
+    related:
+      - Rate
+      - Availability
+      - Revenue Management
+
+  - term: AuthorizedParticipant
+    definition: >-
+      A property that has been approved by Starwood to operate under one of its
+      hotel brands, subject to brand standards and franchise agreements.
+    related:
+      - Franchise
+      - BrandStandards
+
+  - term: PropertyManagementSystem
+    definition: >-
+      The technology platform used by Starwood properties to manage reservations,
+      guest check-in/check-out, room assignments, and billing.
+    related:
+      - Reservation
+      - GuestFolio
+
+  - term: Availability
+    definition: >-
+      The status of whether a specific room type at a hotel is open for booking
+      on given dates at a specified rate.
+    related:
+      - Inventory
+      - Rate
+      - Booking
+
+  - term: MarriottBonvoy
+    definition: >-
+      The combined loyalty program created after Marriott International's acquisition
+      of Starwood Hotels in 2016, replacing separate Marriott Rewards and SPG programs.
+      Launched under the Marriott Bonvoy name in 2019.
+    related:
+      - SPG
+      - Marriott
+      - Acquisition

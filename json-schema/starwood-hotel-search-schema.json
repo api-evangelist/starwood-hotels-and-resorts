@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/starwood-hotels-and-resorts/main/json-schema/starwood-hotel-search-schema.json",
+  "title": "Hotel",
+  "description": "Schema for a Starwood Hotels and Resorts hotel property",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique Starwood hotel identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full hotel property name"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Starwood brand code",
+      "enum": ["SH", "WI", "WH", "SR", "LM", "FP", "AL", "EL", "TP", "DH"]
+    },
+    "brandName": {
+      "type": "string",
+      "description": "Full Starwood brand name",
+      "examples": ["Sheraton", "Westin", "W Hotels", "St. Regis", "Le Méridien"]
+    },
+    "category": {
+      "type": "integer",
+      "description": "SPG category level (1-7, higher is more luxury)",
+      "minimum": 1,
+      "maximum": 7
+    },
+    "thumbnail": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the hotel thumbnail image"
+    },
+    "address": {
+      "type": "string",
+      "description": "Street address"
+    },
+    "city": {
+      "type": "string",
+      "description": "City name"
+    },
+    "state": {
+      "type": "string",
+      "description": "State or province code"
+    },
+    "country": {
+      "type": "string",
+      "description": "Two-letter ISO country code",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "zipcode": {
+      "type": "string",
+      "description": "Postal code"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Hotel front desk phone number"
+    },
+    "fax": {
+      "type": "string",
+      "description": "Hotel fax number"
+    },
+    "description": {
+      "type": "string",
+      "description": "Hotel property description"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "Geographic latitude",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "type": "number",
+      "description": "Geographic longitude",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "bestRate": {
+      "type": "number",
+      "description": "Best available rate per night in USD",
+      "minimum": 0
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code for rates",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "redeemPoints": {
+      "type": "integer",
+      "description": "SPG Starpoints required for award redemption per night",
+      "minimum": 0
+    },
+    "redeemCashPoints": {
+      "type": "integer",
+      "description": "Starpoints required for cash-and-points redemption",
+      "minimum": 0
+    },
+    "amenities": {
+      "type": "array",
+      "description": "List of hotel amenity codes",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["id", "name", "brand", "country"],
+  "additionalProperties": false
+}

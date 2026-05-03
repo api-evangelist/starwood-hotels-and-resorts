@@ -1,0 +1,220 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Starwood Hotel Search API"
+  description: "Shared capability for the Starwood Hotels and Resorts Hotel Search API providing hotel search, property details, and availability."
+  tags:
+    - Hotels
+    - Travel
+    - Hospitality
+    - Availability
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      STARWOOD_API_KEY: STARWOOD_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: starwood-hotel-search
+      baseUri: https://www.starwoodhotels.com/api
+      description: "Starwood Hotels and Resorts Hotel Search API"
+      authentication:
+        type: apikey
+        key: X-API-Key
+        value: "{{STARWOOD_API_KEY}}"
+        placement: header
+      resources:
+        - name: hotels-search
+          path: /v1/hotels/search
+          description: "Search Starwood hotel properties by location and dates"
+          operations:
+            - name: search-hotels
+              method: GET
+              description: "Search hotels by country, city, and travel dates"
+              inputParameters:
+                - name: country
+                  in: query
+                  type: string
+                  required: true
+                  description: "Two-letter ISO country code"
+                - name: province
+                  in: query
+                  type: string
+                  required: false
+                  description: "Province or state code"
+                - name: city
+                  in: query
+                  type: string
+                  required: false
+                  description: "City name"
+                - name: arrivalDate
+                  in: query
+                  type: string
+                  required: true
+                  description: "Check-in date YYYY-MM-DD"
+                - name: departureDate
+                  in: query
+                  type: string
+                  required: true
+                  description: "Check-out date YYYY-MM-DD"
+                - name: adults
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of adult guests"
+                - name: brand
+                  in: query
+                  type: string
+                  required: false
+                  description: "Starwood brand code filter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: hotels-detail
+          path: /v1/hotels/{hotelId}
+          description: "Individual hotel property operations"
+          operations:
+            - name: get-hotel
+              method: GET
+              description: "Get hotel property details by ID"
+              inputParameters:
+                - name: hotelId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Unique hotel identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: hotels-availability
+          path: /v1/hotels/{hotelId}/availability
+          description: "Hotel availability and rate operations"
+          operations:
+            - name: get-hotel-availability
+              method: GET
+              description: "Get available rooms and rates for a hotel"
+              inputParameters:
+                - name: hotelId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Unique hotel identifier"
+                - name: arrivalDate
+                  in: query
+                  type: string
+                  required: true
+                  description: "Check-in date"
+                - name: departureDate
+                  in: query
+                  type: string
+                  required: true
+                  description: "Check-out date"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: starwood-hotel-search-rest
+      resources:
+        - path: /v1/hotels
+          name: hotels
+          description: "Hotel search"
+          operations:
+            - method: GET
+              name: search-hotels
+              description: "Search Starwood hotels"
+              call: "starwood-hotel-search.search-hotels"
+              with:
+                country: "rest.country"
+                city: "rest.city"
+                arrivalDate: "rest.arrivalDate"
+                departureDate: "rest.departureDate"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/hotels/{hotelId}
+          name: hotel-detail
+          description: "Hotel property detail"
+          operations:
+            - method: GET
+              name: get-hotel
+              description: "Get hotel by ID"
+              call: "starwood-hotel-search.get-hotel"
+              with:
+                hotelId: "rest.hotelId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/hotels/{hotelId}/availability
+          name: hotel-availability
+          description: "Hotel availability"
+          operations:
+            - method: GET
+              name: get-hotel-availability
+              description: "Get hotel availability"
+              call: "starwood-hotel-search.get-hotel-availability"
+              with:
+                hotelId: "rest.hotelId"
+                arrivalDate: "rest.arrivalDate"
+                departureDate: "rest.departureDate"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: starwood-hotel-search-mcp
+      transport: http
+      tools:
+        - name: search-hotels
+          description: "Search Starwood hotel properties by location and travel dates"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "starwood-hotel-search.search-hotels"
+          with:
+            country: "tools.country"
+            city: "tools.city"
+            arrivalDate: "tools.arrivalDate"
+            departureDate: "tools.departureDate"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-hotel
+          description: "Get detailed information for a specific Starwood hotel property"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "starwood-hotel-search.get-hotel"
+          with:
+            hotelId: "tools.hotelId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-hotel-availability
+          description: "Check available rooms and rates for a Starwood hotel"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "starwood-hotel-search.get-hotel-availability"
+          with:
+            hotelId: "tools.hotelId"
+            arrivalDate: "tools.arrivalDate"
+            departureDate: "tools.departureDate"
+          outputParameters:
+            - type: object
+              mapping: "$."

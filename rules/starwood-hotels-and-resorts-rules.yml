@@ -1,0 +1,138 @@
+extends:
+  - spectral:oas
+
+rules:
+
+  starwood-info-contact-required:
+    description: All Starwood APIs must include contact information
+    message: API info object must include a contact with URL
+    severity: error
+    given: $.info
+    then:
+      - field: contact
+        function: truthy
+      - field: contact.url
+        function: truthy
+
+  starwood-operation-tags-required:
+    description: All operations must have at least one tag for categorization
+    message: Operation must include at least one tag
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+
+  starwood-operation-summary-required:
+    description: All operations must have a summary
+    message: Operation must have a summary
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+
+  starwood-operation-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: Operation summary must use Title Case (e.g., "Search Hotels" not "search hotels")
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][a-zA-Z0-9]*(?: [A-Z][a-zA-Z0-9]*)*$'
+
+  starwood-operation-id-kebab-case:
+    description: Operation IDs must use camelCase
+    message: OperationId should use camelCase
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+
+  starwood-path-kebab-case:
+    description: API paths must use kebab-case for path segments
+    message: Path segments should use kebab-case (lowercase with hyphens)
+    severity: warn
+    given: $.paths
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '^(/([a-z][a-z0-9-]*|{[a-zA-Z][a-zA-Z0-9]*}))*/?$'
+
+  starwood-dates-use-format:
+    description: Date and date-time fields must declare the appropriate format
+    message: Properties named with 'date' or 'Date' should use format date or date-time
+    severity: warn
+    given: $.components.schemas[*].properties[*date*,*Date*]
+    then:
+      field: format
+      function: truthy
+
+  starwood-hotel-search-country-required:
+    description: Hotel search must always include country parameter validation
+    message: Hotel search path GET /hotels/search must have country as a required parameter
+    severity: error
+    given: $.paths['/v1/hotels/search'].get.parameters[?(@.name=='country')]
+    then:
+      field: required
+      function: truthy
+
+  starwood-response-200-schema:
+    description: Successful GET responses must define a response schema
+    message: GET operations must have a schema defined for 200 response
+    severity: error
+    given: $.paths[*].get.responses['200'].content['application/json']
+    then:
+      field: schema
+      function: truthy
+
+  starwood-response-error-defined:
+    description: All operations must define at least one error response
+    message: Operations should define at least a 400 or 404 error response
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required:
+                - '400'
+            - required:
+                - '404'
+            - required:
+                - '401'
+            - required:
+                - '500'
+
+  starwood-components-schemas-description:
+    description: All schema components must include a description
+    message: Schema component must have a description field
+    severity: warn
+    given: $.components.schemas[*]
+    then:
+      field: description
+      function: truthy
+
+  starwood-parameter-description:
+    description: All parameters must have a description
+    message: Parameter must have a description
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[*]
+    then:
+      field: description
+      function: truthy
+
+  starwood-security-schemes-defined:
+    description: APIs must have security schemes defined
+    message: API must define security schemes for authentication
+    severity: warn
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy

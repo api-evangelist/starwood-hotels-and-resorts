@@ -1,0 +1,141 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Starwood Hotel Booking"
+  description: >-
+    Workflow capability for Starwood Hotels and Resorts hotel booking and travel planning.
+    Combines hotel search, property lookup, and availability checking to support
+    travel planning agents, OTA integrations, and corporate travel management platforms.
+    Enables AI-assisted hotel discovery, comparison, and booking workflows.
+  tags:
+    - Hotels
+    - Travel
+    - Hospitality
+    - Booking
+    - Availability
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      STARWOOD_API_KEY: STARWOOD_API_KEY
+
+capability:
+  consumes:
+    - import: starwood-hotel-search
+      location: ./shared/hotel-search.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: starwood-hotel-booking-api
+      description: "Unified REST API for Starwood hotel search and booking workflows."
+      resources:
+        - path: /v1/hotels
+          name: hotels
+          description: "Search and discover Starwood hotel properties"
+          operations:
+            - method: GET
+              name: search-hotels
+              description: "Search Starwood hotels by location and travel dates"
+              call: "starwood-hotel-search.search-hotels"
+              with:
+                country: "rest.country"
+                province: "rest.province"
+                city: "rest.city"
+                arrivalDate: "rest.arrivalDate"
+                departureDate: "rest.departureDate"
+                adults: "rest.adults"
+                brand: "rest.brand"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/hotels/{hotelId}
+          name: hotel-detail
+          description: "Get complete hotel property details"
+          operations:
+            - method: GET
+              name: get-hotel
+              description: "Get detailed information for a Starwood hotel"
+              call: "starwood-hotel-search.get-hotel"
+              with:
+                hotelId: "rest.hotelId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/hotels/{hotelId}/availability
+          name: hotel-availability
+          description: "Check hotel room availability and rates"
+          operations:
+            - method: GET
+              name: get-hotel-availability
+              description: "Get available rooms, rates, and SPG point redemption options"
+              call: "starwood-hotel-search.get-hotel-availability"
+              with:
+                hotelId: "rest.hotelId"
+                arrivalDate: "rest.arrivalDate"
+                departureDate: "rest.departureDate"
+                adults: "rest.adults"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: starwood-hotel-booking-mcp
+      transport: http
+      description: "MCP server for AI-assisted hotel discovery and travel planning using Starwood properties."
+      tools:
+        - name: search-hotels
+          description: >-
+            Search Starwood hotel properties by destination location and travel dates.
+            Returns hotels with rates, SPG category, amenities, and Starpoints redemption options.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "starwood-hotel-search.search-hotels"
+          with:
+            country: "tools.country"
+            province: "tools.province"
+            city: "tools.city"
+            arrivalDate: "tools.arrivalDate"
+            departureDate: "tools.departureDate"
+            adults: "tools.adults"
+            brand: "tools.brand"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-hotel-details
+          description: >-
+            Get comprehensive information about a specific Starwood hotel property
+            including address, amenities, dining, and contact information.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "starwood-hotel-search.get-hotel"
+          with:
+            hotelId: "tools.hotelId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: check-hotel-availability
+          description: >-
+            Check available room types and rates for a Starwood hotel on specific travel dates.
+            Returns room categories, nightly rates, total stay price, and SPG award night options.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "starwood-hotel-search.get-hotel-availability"
+          with:
+            hotelId: "tools.hotelId"
+            arrivalDate: "tools.arrivalDate"
+            departureDate: "tools.departureDate"
+            adults: "tools.adults"
+          outputParameters:
+            - type: object
+              mapping: "$."

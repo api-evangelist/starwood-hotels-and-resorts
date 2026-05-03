@@ -1,0 +1,27 @@
+{
+  "name": "Hotel",
+  "description": "Starwood Hotels and Resorts hotel property structure",
+  "properties": [
+    { "name": "id", "type": "string", "description": "Unique hotel identifier" },
+    { "name": "name", "type": "string", "description": "Hotel name" },
+    { "name": "brand", "type": "string", "description": "Starwood brand code (SH, WI, WH, etc.)" },
+    { "name": "brandName", "type": "string", "description": "Full brand name" },
+    { "name": "category", "type": "integer", "description": "SPG category 1-7" },
+    { "name": "thumbnail", "type": "string", "description": "Image URL" },
+    { "name": "address", "type": "string", "description": "Street address" },
+    { "name": "city", "type": "string", "description": "City" },
+    { "name": "state", "type": "string", "description": "State or province" },
+    { "name": "country", "type": "string", "description": "ISO country code" },
+    { "name": "zipcode", "type": "string", "description": "Postal code" },
+    { "name": "phone", "type": "string", "description": "Phone number" },
+    { "name": "fax", "type": "string", "description": "Fax number" },
+    { "name": "description", "type": "string", "description": "Property description" },
+    { "name": "latitude", "type": "number", "description": "Geographic latitude" },
+    { "name": "longitude", "type": "number", "description": "Geographic longitude" },
+    { "name": "bestRate", "type": "number", "description": "Best available rate per night" },
+    { "name": "currency", "type": "string", "description": "Rate currency" },
+    { "name": "redeemPoints", "type": "integer", "description": "SPG points for award night" },
+    { "name": "redeemCashPoints", "type": "integer", "description": "SPG points for cash+points" },
+    { "name": "amenities", "type": "array", "description": "Amenity code list" }
+  ]
+}

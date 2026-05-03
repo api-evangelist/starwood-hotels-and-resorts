@@ -1,0 +1,98 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://www.starwoodhotels.com/api/v1/hotels/search",
+    "parameters": {
+      "country": "US",
+      "province": "USIL",
+      "city": "Chicago",
+      "arrivalDate": "2026-06-15",
+      "departureDate": "2026-06-18",
+      "adults": 2,
+      "brand": "WI"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "totalCount": 3,
+      "searchParameters": {
+        "country": "US",
+        "city": "Chicago",
+        "arrivalDate": "2026-06-15",
+        "departureDate": "2026-06-18"
+      },
+      "hotels": [
+        {
+          "id": "1234",
+          "name": "The Westin Michigan Avenue Chicago",
+          "brand": "WI",
+          "brandName": "Westin",
+          "category": 4,
+          "thumbnail": "https://www.starwoodhotels.com/images/hotels/1234/thumb.jpg",
+          "address": "909 N. Michigan Ave.",
+          "city": "Chicago",
+          "state": "IL",
+          "country": "US",
+          "zipcode": "60611",
+          "phone": "+1-312-943-7200",
+          "fax": "+1-312-943-7201",
+          "description": "A landmark Michigan Avenue hotel with breathtaking views of Lake Michigan and the Chicago skyline.",
+          "latitude": 41.8981,
+          "longitude": -87.6240,
+          "bestRate": 289.00,
+          "currency": "USD",
+          "redeemPoints": 12000,
+          "redeemCashPoints": 6000,
+          "amenities": ["POOL", "FITNESS", "SPA", "WIFI", "RESTAURANT", "BUSINESS_CENTER"]
+        },
+        {
+          "id": "2345",
+          "name": "Sheraton Grand Chicago Riverwalk",
+          "brand": "SH",
+          "brandName": "Sheraton",
+          "category": 4,
+          "thumbnail": "https://www.starwoodhotels.com/images/hotels/2345/thumb.jpg",
+          "address": "301 E. North Water St.",
+          "city": "Chicago",
+          "state": "IL",
+          "country": "US",
+          "zipcode": "60611",
+          "phone": "+1-312-464-1000",
+          "fax": "+1-312-464-9140",
+          "description": "Located on the famous Chicago Riverwalk with stunning views of the Chicago River and Lake Michigan.",
+          "latitude": 41.8896,
+          "longitude": -87.6241,
+          "bestRate": 259.00,
+          "currency": "USD",
+          "redeemPoints": 10000,
+          "redeemCashPoints": 5000,
+          "amenities": ["POOL", "FITNESS", "WIFI", "RESTAURANT", "MEETING_ROOMS"]
+        },
+        {
+          "id": "3456",
+          "name": "W Chicago - City Center",
+          "brand": "WH",
+          "brandName": "W Hotels",
+          "category": 4,
+          "thumbnail": "https://www.starwoodhotels.com/images/hotels/3456/thumb.jpg",
+          "address": "172 W. Adams St.",
+          "city": "Chicago",
+          "state": "IL",
+          "country": "US",
+          "zipcode": "60603",
+          "phone": "+1-312-332-1200",
+          "fax": "+1-312-332-1201",
+          "description": "A bold, design-forward hotel in the heart of the Loop featuring the AWAY Spa and Wet Deck rooftop.",
+          "latitude": 41.8791,
+          "longitude": -87.6324,
+          "bestRate": 319.00,
+          "currency": "USD",
+          "redeemPoints": 14000,
+          "redeemCashPoints": 7000,
+          "amenities": ["SPA", "FITNESS", "WIFI", "RESTAURANT", "BAR", "ROOFTOP"]
+        }
+      ]
+    }
+  }
+}

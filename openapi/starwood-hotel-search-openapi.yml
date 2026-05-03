@@ -1,0 +1,479 @@
+openapi: 3.0.3
+info:
+  title: Starwood Hotel Search API
+  description: >-
+    The Starwood Hotel Search API provided partners and developers with programmatic access
+    to search Starwood Hotels & Resorts Worldwide's portfolio of over 1,300 hotel properties
+    across approximately 100 countries. This API supported searching by geographic location
+    (country, province, city) and travel dates, returning property details including name,
+    address, category, best available rate, and Starwood Preferred Guest (SPG) points
+    redemption options. Starwood was acquired by Marriott International in September 2016
+    and the SPG loyalty program was subsequently merged into Marriott Bonvoy in 2019.
+  version: 1.0.0
+  contact:
+    name: Starwood Developer Support
+    url: https://www.starwoodhotels.com
+  termsOfService: https://www.starwoodhotels.com/corporate/terms.html
+  license:
+    name: Proprietary
+    url: https://www.starwoodhotels.com/corporate/terms.html
+servers:
+  - url: https://www.starwoodhotels.com/api
+    description: Starwood Hotels API
+tags:
+  - name: Hotels
+    description: Hotel search and property operations
+  - name: Availability
+    description: Rate and availability operations
+  - name: Properties
+    description: Property detail operations
+paths:
+  /v1/hotels/search:
+    get:
+      operationId: searchHotels
+      summary: Search Hotels
+      description: >-
+        Search Starwood hotel properties by geographic location and travel dates.
+        Returns a list of available hotels with rates, property details, and
+        SPG points redemption options.
+      tags:
+        - Hotels
+      parameters:
+        - name: country
+          in: query
+          description: Two-letter ISO country code (e.g., US, CN, FR)
+          required: true
+          schema:
+            type: string
+            pattern: '^[A-Z]{2}$'
+            example: US
+        - name: province
+          in: query
+          description: Province or state code within the country (e.g., USIL, CNHP)
+          required: false
+          schema:
+            type: string
+            example: USIL
+        - name: city
+          in: query
+          description: City name for hotel search
+          required: false
+          schema:
+            type: string
+            example: Chicago
+        - name: arrivalDate
+          in: query
+          description: Check-in date in YYYY-MM-DD format
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '2026-06-15'
+        - name: departureDate
+          in: query
+          description: Check-out date in YYYY-MM-DD format
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '2026-06-18'
+        - name: adults
+          in: query
+          description: Number of adult guests
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 9
+            default: 1
+        - name: brand
+          in: query
+          description: Filter by Starwood brand code
+          required: false
+          schema:
+            type: string
+            enum:
+              - SH
+              - WI
+              - WH
+              - SR
+              - LM
+              - FP
+              - AL
+              - EL
+              - TP
+              - DH
+            example: WI
+        - name: categoryMin
+          in: query
+          description: Minimum SPG category for luxury filtering (1-7)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 7
+      responses:
+        '200':
+          description: Successful hotel search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelSearchResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No hotels found for given criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /v1/hotels/{hotelId}:
+    get:
+      operationId: getHotelById
+      summary: Get Hotel by ID
+      description: >-
+        Retrieve detailed information for a specific Starwood hotel property by its
+        unique identifier, including full address, contact information, amenities,
+        room types, dining options, and meeting space availability.
+      tags:
+        - Properties
+      parameters:
+        - name: hotelId
+          in: path
+          description: Unique Starwood hotel identifier
+          required: true
+          schema:
+            type: string
+            example: '1234'
+      responses:
+        '200':
+          description: Hotel property details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hotel'
+        '404':
+          description: Hotel not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /v1/hotels/{hotelId}/availability:
+    get:
+      operationId: getHotelAvailability
+      summary: Get Hotel Availability
+      description: >-
+        Check room availability and current rates for a specific Starwood hotel property
+        for given travel dates. Returns available room categories, rates, and SPG points
+        options including cash-and-points combinations.
+      tags:
+        - Availability
+      parameters:
+        - name: hotelId
+          in: path
+          description: Unique Starwood hotel identifier
+          required: true
+          schema:
+            type: string
+            example: '1234'
+        - name: arrivalDate
+          in: query
+          description: Check-in date in YYYY-MM-DD format
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: departureDate
+          in: query
+          description: Check-out date in YYYY-MM-DD format
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: adults
+          in: query
+          description: Number of adult guests
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 9
+            default: 1
+      responses:
+        '200':
+          description: Hotel availability and rates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelAvailabilityResponse'
+        '404':
+          description: Hotel not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: No availability for requested dates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    HotelSearchResponse:
+      type: object
+      description: Response containing a list of matching hotels
+      properties:
+        hotels:
+          type: array
+          description: List of matching hotel properties
+          items:
+            $ref: '#/components/schemas/Hotel'
+        totalCount:
+          type: integer
+          description: Total number of matching hotels
+          example: 12
+        searchParameters:
+          type: object
+          description: Echo of the search parameters used
+          properties:
+            country:
+              type: string
+              example: US
+            city:
+              type: string
+              example: Chicago
+            arrivalDate:
+              type: string
+              format: date
+            departureDate:
+              type: string
+              format: date
+
+    Hotel:
+      type: object
+      description: A Starwood hotel property
+      properties:
+        id:
+          type: string
+          description: Unique Starwood hotel identifier
+          example: '1234'
+        name:
+          type: string
+          description: Full hotel property name
+          example: The Westin Michigan Avenue Chicago
+        brand:
+          type: string
+          description: Starwood brand code
+          example: WI
+        brandName:
+          type: string
+          description: Full Starwood brand name
+          example: Westin
+        category:
+          type: integer
+          description: SPG category level (1-7, higher is more luxury)
+          minimum: 1
+          maximum: 7
+          example: 4
+        thumbnail:
+          type: string
+          description: URL to the hotel thumbnail image
+          format: uri
+          example: https://www.starwoodhotels.com/images/hotels/1234/thumb.jpg
+        address:
+          type: string
+          description: Street address
+          example: 909 N. Michigan Ave.
+        city:
+          type: string
+          description: City name
+          example: Chicago
+        state:
+          type: string
+          description: State or province code
+          example: IL
+        country:
+          type: string
+          description: Two-letter ISO country code
+          example: US
+        zipcode:
+          type: string
+          description: Postal code
+          example: '60611'
+        phone:
+          type: string
+          description: Hotel front desk phone number
+          example: +1-312-943-7200
+        fax:
+          type: string
+          description: Hotel fax number
+          example: +1-312-943-7201
+        description:
+          type: string
+          description: Hotel property description
+          example: >-
+            A landmark Michigan Avenue hotel with breathtaking views of Lake Michigan
+            and the Chicago skyline.
+        latitude:
+          type: number
+          format: double
+          description: Geographic latitude
+          example: 41.8981
+        longitude:
+          type: number
+          format: double
+          description: Geographic longitude
+          example: -87.6240
+        bestRate:
+          type: number
+          format: double
+          description: Best available rate per night in USD
+          example: 289.00
+        currency:
+          type: string
+          description: Currency code for rates
+          example: USD
+        redeemPoints:
+          type: integer
+          description: SPG Starpoints required for award redemption per night
+          example: 12000
+        redeemCashPoints:
+          type: integer
+          description: Starpoints required for cash-and-points redemption
+          example: 6000
+        amenities:
+          type: array
+          description: List of hotel amenity codes
+          items:
+            type: string
+          example:
+            - POOL
+            - FITNESS
+            - SPA
+            - WIFI
+            - RESTAURANT
+            - BUSINESS_CENTER
+
+    HotelAvailabilityResponse:
+      type: object
+      description: Hotel availability and rate information
+      properties:
+        hotelId:
+          type: string
+          description: Unique Starwood hotel identifier
+          example: '1234'
+        arrivalDate:
+          type: string
+          format: date
+          description: Check-in date
+        departureDate:
+          type: string
+          format: date
+          description: Check-out date
+        nights:
+          type: integer
+          description: Number of nights
+          example: 3
+        rooms:
+          type: array
+          description: Available room types and rates
+          items:
+            $ref: '#/components/schemas/RoomRate'
+
+    RoomRate:
+      type: object
+      description: A room type with its available rates
+      properties:
+        roomTypeCode:
+          type: string
+          description: Room type code
+          example: KING
+        roomTypeName:
+          type: string
+          description: Room type name
+          example: Deluxe King Room
+        rateCode:
+          type: string
+          description: Rate plan code
+          example: BAR
+        rateName:
+          type: string
+          description: Rate plan name
+          example: Best Available Rate
+        pricePerNight:
+          type: number
+          format: double
+          description: Rate per night in quoted currency
+          example: 289.00
+        totalPrice:
+          type: number
+          format: double
+          description: Total price for the stay
+          example: 867.00
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        pointsPerNight:
+          type: integer
+          description: SPG Starpoints required for award night
+          example: 12000
+        availability:
+          type: string
+          description: Availability status
+          enum:
+            - AVAILABLE
+            - LIMITED
+            - UNAVAILABLE
+          example: AVAILABLE
+
+    Error:
+      type: object
+      description: Error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid arrival date format. Expected YYYY-MM-DD.
+        details:
+          type: array
+          description: Additional error detail objects
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field name that caused the error
+              message:
+                type: string
+                description: Field-specific error message

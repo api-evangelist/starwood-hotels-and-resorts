@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "starwood": "https://www.starwoodhotels.com/ontology/",
+
+    "Hotel": "schema:LodgingBusiness",
+    "HotelSearch": "schema:SearchAction",
+    "HotelAvailability": "schema:Offer",
+    "RoomRate": "schema:Accommodation",
+    "SPGMember": "schema:Person",
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "thumbnail": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "address": "schema:streetAddress",
+    "city": "schema:addressLocality",
+    "state": "schema:addressRegion",
+    "country": "schema:addressCountry",
+    "zipcode": "schema:postalCode",
+    "phone": "schema:telephone",
+    "fax": "schema:faxNumber",
+    "latitude": "schema:latitude",
+    "longitude": "schema:longitude",
+    "brand": {
+      "@id": "schema:brand",
+      "@type": "schema:Brand"
+    },
+    "brandName": "schema:legalName",
+    "category": "starwood:spgCategory",
+    "bestRate": {
+      "@id": "schema:lowPrice",
+      "@type": "schema:Number"
+    },
+    "currency": "schema:priceCurrency",
+    "amenities": {
+      "@id": "schema:amenityFeature",
+      "@container": "@list"
+    },
+    "redeemPoints": "starwood:starpoints",
+    "redeemCashPoints": "starwood:cashAndPoints",
+    "arrivalDate": {
+      "@id": "schema:checkinTime",
+      "@type": "schema:Date"
+    },
+    "departureDate": {
+      "@id": "schema:checkoutTime",
+      "@type": "schema:Date"
+    },
+    "pricePerNight": {
+      "@id": "schema:price",
+      "@type": "schema:Number"
+    },
+    "availability": "schema:availability",
+    "totalPrice": {
+      "@id": "schema:totalPrice",
+      "@type": "schema:Number"
+    }
+  }
+}
