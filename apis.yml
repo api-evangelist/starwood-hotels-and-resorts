@@ -89,9 +89,9 @@ common:
     url: https://www.starwoodhotels.com/corporate/
   - type: Acquisition
     url: https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-completes-acquisition-starwood-hotels
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.starwoodhotels.com/corporate/terms.html
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.starwoodhotels.com/corporate/privacy.html
   - type: OpenAPI
     url: openapi/starwood-hotel-search-openapi.yml
