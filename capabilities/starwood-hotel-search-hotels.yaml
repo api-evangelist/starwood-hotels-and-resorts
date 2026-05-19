@@ -1,0 +1,121 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Starwood Hotel Search API — Hotels
+  description: 'Starwood Hotel Search API — Hotels. 1 operations. Lead operation: Search Hotels. Self-contained Naftiko capability
+    covering one Starwood Hotels And Resorts business surface.'
+  tags:
+  - Starwood Hotels And Resorts
+  - Hotels
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STARWOOD_HOTELS_AND_RESORTS_API_KEY: STARWOOD_HOTELS_AND_RESORTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: starwood-hotel-search-hotels
+    baseUri: https://www.starwoodhotels.com/api
+    description: Starwood Hotel Search API — Hotels business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-hotels-search
+      path: /v1/hotels/search
+      operations:
+      - name: searchhotels
+        method: GET
+        description: Search Hotels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          description: Two-letter ISO country code (e.g., US, CN, FR)
+          required: true
+        - name: province
+          in: query
+          type: string
+          description: Province or state code within the country (e.g., USIL, CNHP)
+        - name: city
+          in: query
+          type: string
+          description: City name for hotel search
+        - name: arrivalDate
+          in: query
+          type: string
+          description: Check-in date in YYYY-MM-DD format
+          required: true
+        - name: departureDate
+          in: query
+          type: string
+          description: Check-out date in YYYY-MM-DD format
+          required: true
+        - name: adults
+          in: query
+          type: integer
+          description: Number of adult guests
+        - name: brand
+          in: query
+          type: string
+          description: Filter by Starwood brand code
+        - name: categoryMin
+          in: query
+          type: integer
+          description: Minimum SPG category for luxury filtering (1-7)
+  exposes:
+  - type: rest
+    namespace: starwood-hotel-search-hotels-rest
+    port: 8080
+    description: REST adapter for Starwood Hotel Search API — Hotels. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/hotels/search
+      name: v1-hotels-search
+      description: REST surface for v1-hotels-search.
+      operations:
+      - method: GET
+        name: searchhotels
+        description: Search Hotels
+        call: starwood-hotel-search-hotels.searchhotels
+        with:
+          country: rest.country
+          province: rest.province
+          city: rest.city
+          arrivalDate: rest.arrivalDate
+          departureDate: rest.departureDate
+          adults: rest.adults
+          brand: rest.brand
+          categoryMin: rest.categoryMin
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: starwood-hotel-search-hotels-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Starwood Hotel Search API — Hotels. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: search-hotels
+      description: Search Hotels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: starwood-hotel-search-hotels.searchhotels
+      with:
+        country: tools.country
+        province: tools.province
+        city: tools.city
+        arrivalDate: tools.arrivalDate
+        departureDate: tools.departureDate
+        adults: tools.adults
+        brand: tools.brand
+        categoryMin: tools.categoryMin
+      outputParameters:
+      - type: object
+        mapping: $.
