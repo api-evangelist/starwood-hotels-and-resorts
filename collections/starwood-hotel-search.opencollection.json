@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Starwood Hotel Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hotels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Hotels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.starwoodhotels.com/api/v1/hotels/search",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Two-letter ISO country code (e.g., US, CN, FR)"
+              },
+              {
+                "name": "province",
+                "value": "",
+                "type": "query",
+                "description": "Province or state code within the country (e.g., USIL, CNHP)"
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "City name for hotel search"
+              },
+              {
+                "name": "arrivalDate",
+                "value": "",
+                "type": "query",
+                "description": "Check-in date in YYYY-MM-DD format"
+              },
+              {
+                "name": "departureDate",
+                "value": "",
+                "type": "query",
+                "description": "Check-out date in YYYY-MM-DD format"
+              },
+              {
+                "name": "adults",
+                "value": "",
+                "type": "query",
+                "description": "Number of adult guests"
+              },
+              {
+                "name": "brand",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Starwood brand code"
+              },
+              {
+                "name": "categoryMin",
+                "value": "",
+                "type": "query",
+                "description": "Minimum SPG category for luxury filtering (1-7)"
+              }
+            ]
+          },
+          "docs": "Search Starwood hotel properties by geographic location and travel dates. Returns a list of available hotels with rates, property details, and SPG points redemption options."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Hotel by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.starwoodhotels.com/api/v1/hotels/:hotelId",
+            "params": [
+              {
+                "name": "hotelId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Starwood hotel identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information for a specific Starwood hotel property by its unique identifier, including full address, contact information, amenities, room types, dining options, and meeting space availability."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Hotel Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.starwoodhotels.com/api/v1/hotels/:hotelId/availability",
+            "params": [
+              {
+                "name": "hotelId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Starwood hotel identifier"
+              },
+              {
+                "name": "arrivalDate",
+                "value": "",
+                "type": "query",
+                "description": "Check-in date in YYYY-MM-DD format"
+              },
+              {
+                "name": "departureDate",
+                "value": "",
+                "type": "query",
+                "description": "Check-out date in YYYY-MM-DD format"
+              },
+              {
+                "name": "adults",
+                "value": "",
+                "type": "query",
+                "description": "Number of adult guests"
+              }
+            ]
+          },
+          "docs": "Check room availability and current rates for a specific Starwood hotel property for given travel dates. Returns available room categories, rates, and SPG points options including cash-and-points combinations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

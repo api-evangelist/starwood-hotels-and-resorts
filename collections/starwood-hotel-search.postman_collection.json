@@ -1,0 +1,901 @@
+{
+  "item": [
+    {
+      "id": "8bca9599-6298-4db4-b70f-7e8b41efc3fe",
+      "name": "Hotels",
+      "description": {
+        "content": "Hotel search and property operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1ef0f766-3b0e-4673-9441-320f5a414423",
+          "name": "Search Hotels",
+          "request": {
+            "name": "Search Hotels",
+            "description": {
+              "content": "Search Starwood hotel properties by geographic location and travel dates. Returns a list of available hotels with rates, property details, and SPG points redemption options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hotels",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) Two-letter ISO country code (e.g., US, CN, FR)"
+                },
+                {
+                  "disabled": false,
+                  "key": "province",
+                  "value": "<string>",
+                  "description": "Province or state code within the country (e.g., USIL, CNHP)"
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "City name for hotel search"
+                },
+                {
+                  "disabled": false,
+                  "key": "arrivalDate",
+                  "value": "<date>",
+                  "description": "(Required) Check-in date in YYYY-MM-DD format"
+                },
+                {
+                  "disabled": false,
+                  "key": "departureDate",
+                  "value": "<date>",
+                  "description": "(Required) Check-out date in YYYY-MM-DD format"
+                },
+                {
+                  "disabled": false,
+                  "key": "adults",
+                  "value": "1",
+                  "description": "Number of adult guests"
+                },
+                {
+                  "disabled": false,
+                  "key": "brand",
+                  "value": "<string>",
+                  "description": "Filter by Starwood brand code"
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryMin",
+                  "value": "<integer>",
+                  "description": "Minimum SPG category for luxury filtering (1-7)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31af8b2e-c6b5-45b3-a319-1428b6c494ff",
+              "name": "Successful hotel search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "province",
+                      "value": "USIL"
+                    },
+                    {
+                      "key": "city",
+                      "value": "Chicago"
+                    },
+                    {
+                      "key": "arrivalDate",
+                      "value": "2026-06-15"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "2026-06-18"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "WI"
+                    },
+                    {
+                      "key": "categoryMin",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hotels\": [\n    {\n      \"id\": \"1234\",\n      \"name\": \"The Westin Michigan Avenue Chicago\",\n      \"brand\": \"WI\",\n      \"brandName\": \"Westin\",\n      \"category\": 4,\n      \"thumbnail\": \"https://www.starwoodhotels.com/images/hotels/1234/thumb.jpg\",\n      \"address\": \"909 N. Michigan Ave.\",\n      \"city\": \"Chicago\",\n      \"state\": \"IL\",\n      \"country\": \"US\",\n      \"zipcode\": \"60611\",\n      \"phone\": \"+1-312-943-7200\",\n      \"fax\": \"+1-312-943-7201\",\n      \"description\": \"A landmark Michigan Avenue hotel with breathtaking views of Lake Michigan and the Chicago skyline.\",\n      \"latitude\": 41.8981,\n      \"longitude\": -87.624,\n      \"bestRate\": 289,\n      \"currency\": \"USD\",\n      \"redeemPoints\": 12000,\n      \"redeemCashPoints\": 6000,\n      \"amenities\": [\n        \"POOL\",\n        \"FITNESS\",\n        \"SPA\",\n        \"WIFI\",\n        \"RESTAURANT\",\n        \"BUSINESS_CENTER\"\n      ]\n    },\n    {\n      \"id\": \"1234\",\n      \"name\": \"The Westin Michigan Avenue Chicago\",\n      \"brand\": \"WI\",\n      \"brandName\": \"Westin\",\n      \"category\": 4,\n      \"thumbnail\": \"https://www.starwoodhotels.com/images/hotels/1234/thumb.jpg\",\n      \"address\": \"909 N. Michigan Ave.\",\n      \"city\": \"Chicago\",\n      \"state\": \"IL\",\n      \"country\": \"US\",\n      \"zipcode\": \"60611\",\n      \"phone\": \"+1-312-943-7200\",\n      \"fax\": \"+1-312-943-7201\",\n      \"description\": \"A landmark Michigan Avenue hotel with breathtaking views of Lake Michigan and the Chicago skyline.\",\n      \"latitude\": 41.8981,\n      \"longitude\": -87.624,\n      \"bestRate\": 289,\n      \"currency\": \"USD\",\n      \"redeemPoints\": 12000,\n      \"redeemCashPoints\": 6000,\n      \"amenities\": [\n        \"POOL\",\n        \"FITNESS\",\n        \"SPA\",\n        \"WIFI\",\n        \"RESTAURANT\",\n        \"BUSINESS_CENTER\"\n      ]\n    }\n  ],\n  \"totalCount\": 12,\n  \"searchParameters\": {\n    \"country\": \"US\",\n    \"city\": \"Chicago\",\n    \"arrivalDate\": \"1947-10-30\",\n    \"departureDate\": \"2005-02-01\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac7de41c-64b0-4fe9-a2e9-b35c08158403",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "province",
+                      "value": "USIL"
+                    },
+                    {
+                      "key": "city",
+                      "value": "Chicago"
+                    },
+                    {
+                      "key": "arrivalDate",
+                      "value": "2026-06-15"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "2026-06-18"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "WI"
+                    },
+                    {
+                      "key": "categoryMin",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3991c423-6293-4889-8154-012c349a8efd",
+              "name": "No hotels found for given criteria",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "province",
+                      "value": "USIL"
+                    },
+                    {
+                      "key": "city",
+                      "value": "Chicago"
+                    },
+                    {
+                      "key": "arrivalDate",
+                      "value": "2026-06-15"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "2026-06-18"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "WI"
+                    },
+                    {
+                      "key": "categoryMin",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab7c84fa-6dba-4d63-b4dc-3366835f2316",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "province",
+                      "value": "USIL"
+                    },
+                    {
+                      "key": "city",
+                      "value": "Chicago"
+                    },
+                    {
+                      "key": "arrivalDate",
+                      "value": "2026-06-15"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "2026-06-18"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "WI"
+                    },
+                    {
+                      "key": "categoryMin",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b28b4d29-2fdb-4467-8b63-f4897c7950bd",
+      "name": "Availability",
+      "description": {
+        "content": "Rate and availability operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28a1073b-972e-437e-9b1e-0e09e66209da",
+          "name": "Get Hotel Availability",
+          "request": {
+            "name": "Get Hotel Availability",
+            "description": {
+              "content": "Check room availability and current rates for a specific Starwood hotel property for given travel dates. Returns available room categories, rates, and SPG points options including cash-and-points combinations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hotels",
+                ":hotelId",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arrivalDate",
+                  "value": "<date>",
+                  "description": "(Required) Check-in date in YYYY-MM-DD format"
+                },
+                {
+                  "disabled": false,
+                  "key": "departureDate",
+                  "value": "<date>",
+                  "description": "(Required) Check-out date in YYYY-MM-DD format"
+                },
+                {
+                  "disabled": false,
+                  "key": "adults",
+                  "value": "1",
+                  "description": "Number of adult guests"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hotelId",
+                  "description": "(Required) Unique Starwood hotel identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a46783c-0370-4aef-876f-0c15e582ee20",
+              "name": "Hotel availability and rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arrivalDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hotelId\": \"1234\",\n  \"arrivalDate\": \"2015-05-09\",\n  \"departureDate\": \"1962-11-01\",\n  \"nights\": 3,\n  \"rooms\": [\n    {\n      \"roomTypeCode\": \"KING\",\n      \"roomTypeName\": \"Deluxe King Room\",\n      \"rateCode\": \"BAR\",\n      \"rateName\": \"Best Available Rate\",\n      \"pricePerNight\": 289,\n      \"totalPrice\": 867,\n      \"currency\": \"USD\",\n      \"pointsPerNight\": 12000,\n      \"availability\": \"AVAILABLE\"\n    },\n    {\n      \"roomTypeCode\": \"KING\",\n      \"roomTypeName\": \"Deluxe King Room\",\n      \"rateCode\": \"BAR\",\n      \"rateName\": \"Best Available Rate\",\n      \"pricePerNight\": 289,\n      \"totalPrice\": 867,\n      \"currency\": \"USD\",\n      \"pointsPerNight\": 12000,\n      \"availability\": \"AVAILABLE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcc32ea9-8bc7-4374-b55c-b00f1a22cb25",
+              "name": "Hotel not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arrivalDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aed15223-68f3-4a28-8262-49c085b05dba",
+              "name": "No availability for requested dates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arrivalDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de328f85-b2bc-4e3a-b170-d8b348f61f31",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arrivalDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e1a77cc4-e69a-4463-8950-dde83984a09a",
+      "name": "Properties",
+      "description": {
+        "content": "Property detail operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b726e309-6b80-4380-8b96-9a207533b013",
+          "name": "Get Hotel by ID",
+          "request": {
+            "name": "Get Hotel by ID",
+            "description": {
+              "content": "Retrieve detailed information for a specific Starwood hotel property by its unique identifier, including full address, contact information, amenities, room types, dining options, and meeting space availability.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hotels",
+                ":hotelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hotelId",
+                  "description": "(Required) Unique Starwood hotel identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f47a0f14-1950-4378-a562-579e14447d53",
+              "name": "Hotel property details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1234\",\n  \"name\": \"The Westin Michigan Avenue Chicago\",\n  \"brand\": \"WI\",\n  \"brandName\": \"Westin\",\n  \"category\": 4,\n  \"thumbnail\": \"https://www.starwoodhotels.com/images/hotels/1234/thumb.jpg\",\n  \"address\": \"909 N. Michigan Ave.\",\n  \"city\": \"Chicago\",\n  \"state\": \"IL\",\n  \"country\": \"US\",\n  \"zipcode\": \"60611\",\n  \"phone\": \"+1-312-943-7200\",\n  \"fax\": \"+1-312-943-7201\",\n  \"description\": \"A landmark Michigan Avenue hotel with breathtaking views of Lake Michigan and the Chicago skyline.\",\n  \"latitude\": 41.8981,\n  \"longitude\": -87.624,\n  \"bestRate\": 289,\n  \"currency\": \"USD\",\n  \"redeemPoints\": 12000,\n  \"redeemCashPoints\": 6000,\n  \"amenities\": [\n    \"POOL\",\n    \"FITNESS\",\n    \"SPA\",\n    \"WIFI\",\n    \"RESTAURANT\",\n    \"BUSINESS_CENTER\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8389c015-e1e4-413e-a400-28c2287f2e13",
+              "name": "Hotel not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c29fb574-3020-4cb6-be00-092d13fe2968",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.starwoodhotels.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f9c67ff9-3243-4a76-8846-b0dbc68149bd",
+    "name": "Starwood Hotel Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Starwood Hotel Search API provided partners and developers with programmatic access to search Starwood Hotels & Resorts Worldwide's portfolio of over 1,300 hotel properties across approximately 100 countries. This API supported searching by geographic location (country, province, city) and travel dates, returning property details including name, address, category, best available rate, and Starwood Preferred Guest (SPG) points redemption options. Starwood was acquired by Marriott International in September 2016 and the SPG loyalty program was subsequently merged into Marriott Bonvoy in 2019.\n\nContact Support:\n Name: Starwood Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
