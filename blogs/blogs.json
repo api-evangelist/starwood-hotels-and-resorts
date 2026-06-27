@@ -3,16 +3,10 @@
   "feeds": [
     {
       "source": "https://www.starwoodhotels.com/corporate/",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://www.facebook.com/starwood",
-      "feed_url": "https://www.facebook.com/starwood",
-      "title": "",
       "saved": 0,
-      "method": "none"
+      "error": "HTTP 404 Not Found"
     }
   ],
-  "post_count": 18,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T13:13:11Z",
+  "post_count": 18
 }

@@ -70,7 +70,7 @@ apis:
 common:
   - type: Website
     url: https://www.starwoodhotels.com
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://github.com/StayExpert/starwood
   - type: LinkedIn
     url: https://www.linkedin.com/company/starwoodhotels
