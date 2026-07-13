@@ -2,11 +2,13 @@
   "repo": "starwood-hotels-and-resorts",
   "feeds": [
     {
-      "source": "https://www.starwoodhotels.com/corporate/",
+      "source": "https://www.facebook.com/starwood",
+      "feed_url": "https://www.facebook.com/starwood",
+      "title": "",
       "saved": 0,
-      "error": "HTTP 404 Not Found"
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T13:13:11Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 18
 }
