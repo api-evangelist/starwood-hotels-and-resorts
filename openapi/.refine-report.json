@@ -1,0 +1,18 @@
+{
+  "provider": "starwood-hotels-and-resorts",
+  "sources": [
+    "starwood-hotels-and-resorts-availability-api-openapi.yml",
+    "starwood-hotels-and-resorts-hotels-api-openapi.yml",
+    "starwood-hotels-and-resorts-properties-api-openapi.yml"
+  ],
+  "outputs": [
+    "starwood-hotels-and-resorts-availability-api-openapi.yml",
+    "starwood-hotels-and-resorts-hotels-api-openapi.yml",
+    "starwood-hotels-and-resorts-properties-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
