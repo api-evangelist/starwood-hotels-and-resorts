@@ -120,7 +120,7 @@ common:
   - type: PrivacyPolicy
     url: https://www.starwoodhotels.com/corporate/privacy.html
   - type: OpenAPI
-    url: openapi/starwood-hotel-search-openapi.yml
+    url: openapi/_original/starwood-hotel-search-openapi.yml
   - type: JSONSchema
     url: json-schema/starwood-hotel-search-schema.json
   - type: JSONStructure
