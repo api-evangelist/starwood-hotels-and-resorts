@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Starwood Hotel Search Availability API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Hotel Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.starwoodhotels.com/api/v1/hotels/:hotelId/availability",
+            "params": [
+              {
+                "name": "hotelId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Starwood hotel identifier"
+              },
+              {
+                "name": "arrivalDate",
+                "value": "",
+                "type": "query",
+                "description": "Check-in date in YYYY-MM-DD format"
+              },
+              {
+                "name": "departureDate",
+                "value": "",
+                "type": "query",
+                "description": "Check-out date in YYYY-MM-DD format"
+              },
+              {
+                "name": "adults",
+                "value": "",
+                "type": "query",
+                "description": "Number of adult guests"
+              }
+            ]
+          },
+          "docs": "Check room availability and current rates for a specific Starwood hotel property for given travel dates. Returns available room categories, rates, and SPG points options including cash-and-points combinations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Starwood Hotel Search Availability Properties API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Hotel by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.starwoodhotels.com/api/v1/hotels/:hotelId",
+            "params": [
+              {
+                "name": "hotelId",
+                "value": "",
+                "type": "path",
+                "description": "Unique Starwood hotel identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information for a specific Starwood hotel property by its unique identifier, including full address, contact information, amenities, room types, dining options, and meeting space availability."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

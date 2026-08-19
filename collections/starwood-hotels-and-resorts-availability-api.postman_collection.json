@@ -1,0 +1,333 @@
+{
+  "item": [
+    {
+      "id": "bea12b8f-91db-4a9f-bead-b048aa6020f5",
+      "name": "Availability",
+      "description": {
+        "content": "Rate and availability operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc4a0cf4-1cd9-49d2-823b-ec45f11601e4",
+          "name": "Get Hotel Availability",
+          "request": {
+            "name": "Get Hotel Availability",
+            "description": {
+              "content": "Check room availability and current rates for a specific Starwood hotel property for given travel dates. Returns available room categories, rates, and SPG points options including cash-and-points combinations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hotels",
+                ":hotelId",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arrivalDate",
+                  "value": "<date>",
+                  "description": "(Required) Check-in date in YYYY-MM-DD format"
+                },
+                {
+                  "disabled": false,
+                  "key": "departureDate",
+                  "value": "<date>",
+                  "description": "(Required) Check-out date in YYYY-MM-DD format"
+                },
+                {
+                  "disabled": false,
+                  "key": "adults",
+                  "value": "1",
+                  "description": "Number of adult guests"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hotelId",
+                  "description": "(Required) Unique Starwood hotel identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c5c75fe-9a5e-454c-8a2f-3f6c7e5df566",
+              "name": "Hotel availability and rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arrivalDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hotelId\": \"1234\",\n  \"arrivalDate\": \"1955-03-13\",\n  \"departureDate\": \"2020-08-31\",\n  \"nights\": 3,\n  \"rooms\": [\n    {\n      \"roomTypeCode\": \"KING\",\n      \"roomTypeName\": \"Deluxe King Room\",\n      \"rateCode\": \"BAR\",\n      \"rateName\": \"Best Available Rate\",\n      \"pricePerNight\": 289,\n      \"totalPrice\": 867,\n      \"currency\": \"USD\",\n      \"pointsPerNight\": 12000,\n      \"availability\": \"AVAILABLE\"\n    },\n    {\n      \"roomTypeCode\": \"KING\",\n      \"roomTypeName\": \"Deluxe King Room\",\n      \"rateCode\": \"BAR\",\n      \"rateName\": \"Best Available Rate\",\n      \"pricePerNight\": 289,\n      \"totalPrice\": 867,\n      \"currency\": \"USD\",\n      \"pointsPerNight\": 12000,\n      \"availability\": \"AVAILABLE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f345d268-11e2-44f8-8d83-64f0e7d2cfde",
+              "name": "Hotel not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arrivalDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efc43ddc-b6c6-4465-8fe8-f4de7521c6d1",
+              "name": "No availability for requested dates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arrivalDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "114913ea-dfa0-4d1b-931b-ce5b41654e8d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arrivalDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "departureDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "adults",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.starwoodhotels.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "aa7bb0a9-b219-48a2-8d02-0b522596ae33",
+    "name": "Starwood Hotel Search Availability API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Starwood Hotel Search API provided partners and developers with programmatic access to search Starwood Hotels & Resorts Worldwide's portfolio of over 1,300 hotel properties across approximately 100 countries. This API supported searching by geographic location (country, province, city) and travel dates, returning property details including name, address, category, best available rate, and Starwood Preferred Guest (SPG) points redemption options. Starwood was acquired by Marriott International in September 2016 and the SPG loyalty program was subsequently merged into Marriott Bonvoy in 2019.\n\nContact Support:\n Name: Starwood Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

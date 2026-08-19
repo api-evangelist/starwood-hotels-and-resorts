@@ -1,0 +1,212 @@
+{
+  "item": [
+    {
+      "id": "06b1f3b1-358d-413e-96ff-59f183aadc21",
+      "name": "Properties",
+      "description": {
+        "content": "Property detail operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "726e304d-1da9-4f72-950b-8283dfa2fd73",
+          "name": "Get Hotel by ID",
+          "request": {
+            "name": "Get Hotel by ID",
+            "description": {
+              "content": "Retrieve detailed information for a specific Starwood hotel property by its unique identifier, including full address, contact information, amenities, room types, dining options, and meeting space availability.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hotels",
+                ":hotelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hotelId",
+                  "description": "(Required) Unique Starwood hotel identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8eecaec-fb56-4472-965e-06fcb5c0a0ed",
+              "name": "Hotel property details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1234\",\n  \"name\": \"The Westin Michigan Avenue Chicago\",\n  \"brand\": \"WI\",\n  \"brandName\": \"Westin\",\n  \"category\": 4,\n  \"thumbnail\": \"https://www.starwoodhotels.com/images/hotels/1234/thumb.jpg\",\n  \"address\": \"909 N. Michigan Ave.\",\n  \"city\": \"Chicago\",\n  \"state\": \"IL\",\n  \"country\": \"US\",\n  \"zipcode\": \"60611\",\n  \"phone\": \"+1-312-943-7200\",\n  \"fax\": \"+1-312-943-7201\",\n  \"description\": \"A landmark Michigan Avenue hotel with breathtaking views of Lake Michigan and the Chicago skyline.\",\n  \"latitude\": 41.8981,\n  \"longitude\": -87.624,\n  \"bestRate\": 289,\n  \"currency\": \"USD\",\n  \"redeemPoints\": 12000,\n  \"redeemCashPoints\": 6000,\n  \"amenities\": [\n    \"POOL\",\n    \"FITNESS\",\n    \"SPA\",\n    \"WIFI\",\n    \"RESTAURANT\",\n    \"BUSINESS_CENTER\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfaf9cf2-ffc2-476c-be04-839789eca662",
+              "name": "Hotel not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c92f78e-235d-4b34-9424-dba087aee2c2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hotels",
+                    ":hotelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hotelId",
+                      "description": "(Required) Unique Starwood hotel identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid arrival date format. Expected YYYY-MM-DD.\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.starwoodhotels.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "445fa0cf-e842-4d62-b11f-e92badc9e011",
+    "name": "Starwood Hotel Search Availability Properties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Starwood Hotel Search API provided partners and developers with programmatic access to search Starwood Hotels & Resorts Worldwide's portfolio of over 1,300 hotel properties across approximately 100 countries. This API supported searching by geographic location (country, province, city) and travel dates, returning property details including name, address, category, best available rate, and Starwood Preferred Guest (SPG) points redemption options. Starwood was acquired by Marriott International in September 2016 and the SPG loyalty program was subsequently merged into Marriott Bonvoy in 2019.\n\nContact Support:\n Name: Starwood Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
