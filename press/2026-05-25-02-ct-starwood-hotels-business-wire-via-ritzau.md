@@ -1,7 +1,9 @@
 ---
 title: CT-STARWOOD-HOTELS | Business Wire - Via Ritzau
 url: https://via.ritzau.dk/pressemeddelelse/3177140/ct-starwood-hotels?publisherId=90456
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Starwood Hotels & Resorts" press release artificial intelligence'
 position: 2
 source: serpapi-google

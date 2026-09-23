@@ -1,7 +1,9 @@
 ---
 title: Starwood Hotels Return and Expansion
 url: https://www.facebook.com/groups/marriottmy/posts/4046549028966977/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Starwood Hotels & Resorts" press release artificial intelligence'
 position: 3
 source: serpapi-google

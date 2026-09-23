@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Starwood Hotel Search Availability Hotels API
-  description: The Starwood Hotel Search API provided partners and developers with programmatic access to search Starwood Hotels & Resorts Worldwide's portfolio of over 1,300 hotel properties across approximately 100 countries. This API supported searching by geographic location (country, province, city) and travel dates, returning property details including name, address, category, best available rate, and Starwood Preferred Guest (SPG) points redemption options. Starwood was acquired by Marriott International in September 2016 and the SPG loyalty program was subsequently merged into Marriott Bonvoy in 2019.
+  title: Starwood Hotel Search Hotels API
+  description: The Starwood Hotel Search API provided partners and developers with programmatic access to search Starwood Hotels & Resorts Worldwide's portfolio of over 1,300 hotel properties across approximately 100 countries.
   version: 1.0.0
   contact:
     name: Starwood Developer Support
@@ -125,30 +125,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      description: Error response
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid arrival date format. Expected YYYY-MM-DD.
-        details:
-          type: array
-          description: Additional error detail objects
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-                description: Field name that caused the error
-              message:
-                type: string
-                description: Field-specific error message
     Hotel:
       type: object
       description: A Starwood hotel property
@@ -251,6 +227,30 @@ components:
           - WIFI
           - RESTAURANT
           - BUSINESS_CENTER
+    Error:
+      type: object
+      description: Error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid arrival date format. Expected YYYY-MM-DD.
+        details:
+          type: array
+          description: Additional error detail objects
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field name that caused the error
+              message:
+                type: string
+                description: Field-specific error message
     HotelSearchResponse:
       type: object
       description: Response containing a list of matching hotels
