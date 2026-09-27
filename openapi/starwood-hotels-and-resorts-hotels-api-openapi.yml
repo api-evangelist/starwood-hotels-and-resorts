@@ -125,6 +125,59 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    HotelSearchResponse:
+      type: object
+      description: Response containing a list of matching hotels
+      properties:
+        hotels:
+          type: array
+          description: List of matching hotel properties
+          items:
+            $ref: '#/components/schemas/Hotel'
+        totalCount:
+          type: integer
+          description: Total number of matching hotels
+          example: 12
+        searchParameters:
+          type: object
+          description: Echo of the search parameters used
+          properties:
+            country:
+              type: string
+              example: US
+            city:
+              type: string
+              example: Chicago
+            arrivalDate:
+              type: string
+              format: date
+            departureDate:
+              type: string
+              format: date
+    Error:
+      type: object
+      description: Error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid arrival date format. Expected YYYY-MM-DD.
+        details:
+          type: array
+          description: Additional error detail objects
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field name that caused the error
+              message:
+                type: string
+                description: Field-specific error message
     Hotel:
       type: object
       description: A Starwood hotel property
@@ -227,56 +280,3 @@ components:
           - WIFI
           - RESTAURANT
           - BUSINESS_CENTER
-    Error:
-      type: object
-      description: Error response
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid arrival date format. Expected YYYY-MM-DD.
-        details:
-          type: array
-          description: Additional error detail objects
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-                description: Field name that caused the error
-              message:
-                type: string
-                description: Field-specific error message
-    HotelSearchResponse:
-      type: object
-      description: Response containing a list of matching hotels
-      properties:
-        hotels:
-          type: array
-          description: List of matching hotel properties
-          items:
-            $ref: '#/components/schemas/Hotel'
-        totalCount:
-          type: integer
-          description: Total number of matching hotels
-          example: 12
-        searchParameters:
-          type: object
-          description: Echo of the search parameters used
-          properties:
-            country:
-              type: string
-              example: US
-            city:
-              type: string
-              example: Chicago
-            arrivalDate:
-              type: string
-              format: date
-            departureDate:
-              type: string
-              format: date
