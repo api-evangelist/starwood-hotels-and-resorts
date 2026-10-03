@@ -82,6 +82,30 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      type: object
+      description: Error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid arrival date format. Expected YYYY-MM-DD.
+        details:
+          type: array
+          description: Additional error detail objects
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field name that caused the error
+              message:
+                type: string
+                description: Field-specific error message
     RoomRate:
       type: object
       description: A room type with its available rates
@@ -128,30 +152,6 @@ components:
           - LIMITED
           - UNAVAILABLE
           example: AVAILABLE
-    Error:
-      type: object
-      description: Error response
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid arrival date format. Expected YYYY-MM-DD.
-        details:
-          type: array
-          description: Additional error detail objects
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-                description: Field name that caused the error
-              message:
-                type: string
-                description: Field-specific error message
     HotelAvailabilityResponse:
       type: object
       description: Hotel availability and rate information
