@@ -109,6 +109,12 @@ apis:
   - type: Documentation
     url: https://github.com/StayExpert/starwood
 common:
+- type: Plans
+  url: plans/starwood-hotels-and-resorts-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/starwood-hotels-and-resorts-rate-limits.yml
+- type: FinOps
+  url: finops/starwood-hotels-and-resorts-finops.yml
 - type: AgenticAccess
   url: agentic-access/starwood-hotels-and-resorts-agentic-access.yml
 - type: DomainSecurity
