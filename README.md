@@ -1,4 +1,4 @@
-# Starwood Hotels and Resorts (starwood-hotels-and-resorts)
+# Starwood Hotels and Resorts
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,91 +66,158 @@
 
 Starwood Hotels & Resorts Worldwide was a global hotel and leisure company headquartered in Stamford, Connecticut. Prior to its acquisition by Marriott International in September 2016, Starwood operated and franchised hotels, resorts, and residences under iconic brands including Sheraton, Westin, W Hotels, St. Regis, Le Méridien, Four Points, Tribute Portfolio, Design Hotels, Element, and Aloft. The company also operated the Starwood Preferred Guest (SPG) loyalty program, which was later merged into Marriott Bonvoy. At the time of acquisition, Starwood managed over 1,300 properties in approximately 100 countries. Starwood exposed APIs for hotel search, property data, and loyalty program integration that were consumed by travel platforms and partners.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/starwood-hotels-and-resorts/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/starwood-hotels-and-resorts/refs/heads/main/apis.yml)
+**Areas:** Hotels · Travel · Hospitality · Loyalty · Rewards · Content
 
-## Timestamps
+## Starwood Hotels and Resorts on APIs.io
 
-- **Modified:** 2026-05-19
+Everything profiled for Starwood Hotels and Resorts is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/starwood-hotels-and-resorts/](https://apis.io/providers/starwood-hotels-and-resorts/)** — or go straight to one of the APIs or properties below.
 
-## APIs
+### APIs (5)
 
-### Hotel Search API
+- [SPG Loyalty API](https://apis.io/apis/starwood-hotels-and-resorts/spg-loyalty-api/) — The Starwood Preferred Guest (SPG) Loyalty API provided programmatic access to the SPG loyalty program, enabling partners to query member point balances,…
+- [Property Data API](https://apis.io/apis/starwood-hotels-and-resorts/property-data-api/) — The Starwood Property Data API provided detailed information about individual hotel properties including room types, amenities, dining options, meeting and…
+- [Starwood Hotels and Resorts Availability API](https://apis.io/apis/starwood-hotels-and-resorts/starwood-hotels-and-resorts-availability-api/) — Rate and availability operations
+- [Starwood Hotels and Resorts Hotels API](https://apis.io/apis/starwood-hotels-and-resorts/starwood-hotels-and-resorts-hotels-api/) — Hotel search and property operations
+- [Starwood Hotels and Resorts Properties API](https://apis.io/apis/starwood-hotels-and-resorts/starwood-hotels-and-resorts-properties-api/) — Property detail operations
 
-The Starwood Hotel Search API allowed partners and developers to search Starwood's portfolio of hotels and resorts by location, dates, and availability. It supported querying by country, province, city, and date range, returning property details including name, address, category, best available rate, and SPG points redemption options. This API underpinned partner booking integrations, OTA connections, and travel management platform integrations.
+### Published properties
 
-- **Human URL:** [https://www.starwoodhotels.com/](https://www.starwoodhotels.com/)
-- **Base URL:** `https://www.starwoodhotels.com/api`
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-#### Tags
+#### Agentic access (1)
 
-- Hotels
-- Travel
-- Hospitality
-- Search
-- Availability
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Properties
+- [Starwood Hotels And Resorts Agentic Access](https://apis.io/agentic-access/starwood-hotels-and-resorts/starwood-hotels-and-resorts-agentic-access/)
 
-- [Documentation](https://github.com/StayExpert/starwood)
-- [OpenAPI](openapi/starwood-hotel-search-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/starwood-hotel-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starwood-hotel-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### JSON Schema (1)
 
-### SPG Loyalty API
+The data models the API reads and writes.
 
-The Starwood Preferred Guest (SPG) Loyalty API provided programmatic access to the SPG loyalty program, enabling partners to query member point balances, redeem Starpoints, look up member status and tier information, and book award nights. The program offered Preferred, Gold, and Platinum status tiers with corresponding benefits. Following the Marriott acquisition, SPG was eventually merged into the Marriott Bonvoy loyalty program in 2019.
+- [Hotel](https://apis.io/schemas/starwood-hotels-and-resorts/starwood-hotel-search/)
 
-- **Human URL:** [https://www.starwoodhotels.com/preferredguest/](https://www.starwoodhotels.com/preferredguest/)
-- **Base URL:** `https://www.starwoodhotels.com/api/spg`
+#### JSON Structure (1)
 
-#### Tags
+Data models expressed in JSON Structure.
 
-- Loyalty
-- Rewards
-- Hotels
-- Travel
-- Hospitality
+- [Starwood Hotel Structure](https://apis.io/json-structure/starwood-hotels-and-resorts/starwood-hotel-structure/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://www.starwoodhotels.com/preferredguest/)
-- [Postman Collection](collections/starwood-hotel-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starwood-hotel-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Linked-data contexts for the provider's vocabulary.
 
-### Property Data API
+- [Starwood Hotels And Resorts Context](https://apis.io/jsonld/starwood-hotels-and-resorts/starwood-hotels-and-resorts-context/)
 
-The Starwood Property Data API provided detailed information about individual hotel properties including room types, amenities, dining options, meeting and event spaces, photos, geo-coordinates, and contact information. Partners used this API to populate travel booking sites and corporate travel management systems with accurate Starwood property content.
+#### Vocabulary (1)
 
-- **Human URL:** [https://www.starwoodhotels.com/](https://www.starwoodhotels.com/)
-- **Base URL:** `https://www.starwoodhotels.com/api/properties`
+The provider's domain terms, defined.
 
-#### Tags
+- [Starwood Hotels and Resorts Vocabulary](https://apis.io/vocabularies/starwood-hotels-and-resorts/starwood-hotels-and-resorts-vocabulary/)
 
-- Hotels
-- Properties
-- Travel
-- Content
-- Hospitality
+#### Examples (1)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://www.starwoodhotels.com/)
-- [Postman Collection](collections/starwood-hotel-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starwood-hotel-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Starwood Search Hotels Example](https://apis.io/examples/starwood-hotels-and-resorts/starwood-search-hotels-example/)
 
-## Common Properties
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Starwood Hotel Search API](https://apis.io/collections/starwood-hotels-and-resorts/open-starwood-hotel-search/)
+- [Starwood Hotel Search Availability API](https://apis.io/collections/starwood-hotels-and-resorts/open-starwood-hotels-and-resorts-availability-api/)
+- [Starwood Hotel Search Availability Hotels API](https://apis.io/collections/starwood-hotels-and-resorts/open-starwood-hotels-and-resorts-hotels-api/)
+- [Starwood Hotel Search Availability Properties API](https://apis.io/collections/starwood-hotels-and-resorts/open-starwood-hotels-and-resorts-properties-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Starwood Hotels and Resorts — jsonschema rules](https://apis.io/rules/starwood-hotels-and-resorts/starwood-hotels-and-resorts-jsonschema-spectral-rules/)
+- [Starwood Hotels and Resorts API Rules](https://apis.io/rules/starwood-hotels-and-resorts/starwood-hotels-and-resorts-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Starwood Hotels And Resorts Domain Security](https://apis.io/security/starwood-hotels-and-resorts/starwood-hotels-and-resorts-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Starwood Hotels And Resorts Plans Pricing](https://apis.io/plans/starwood-hotels-and-resorts/starwood-hotels-and-resorts-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Starwood Hotels And Resorts Rate Limits](https://apis.io/rate-limits/starwood-hotels-and-resorts/starwood-hotels-and-resorts-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Starwood Hotels And Resorts Finops](https://apis.io/finops/starwood-hotels-and-resorts/starwood-hotels-and-resorts-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.starwoodhotels.com)
-- [Developer  Portal](https://github.com/StayExpert/starwood)
-- [LinkedIn](https://www.linkedin.com/company/starwoodhotels)
-- [Facebook](https://www.facebook.com/starwood)
 - [Blog](https://www.starwoodhotels.com/corporate/)
-- [Acquisition](https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-completes-acquisition-starwood-hotels)
-- [Terms of Service](https://www.starwoodhotels.com/corporate/terms.html)
-- [Privacy Policy](https://www.starwoodhotels.com/corporate/privacy.html)
-- [OpenAPI](openapi/starwood-hotel-search-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](json-schema/starwood-hotel-search-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/starwood-hotel-structure.json)
-- [JSON-LD](json-ld/starwood-hotels-and-resorts-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Vocabulary](vocabulary/starwood-hotels-and-resorts-vocabulary.yml)
-- [Spectral Rules](rules/starwood-hotels-and-resorts-rules.yml)
+- [Terms of service](https://www.starwoodhotels.com/corporate/terms.html)
+- [Privacy policy](https://www.starwoodhotels.com/corporate/privacy.html)
+
+## API Evangelist rating
+
+**Kin Score 27.1** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 60.7 |
+| Contract quality | 51.4 |
+| Contract governance | 27.3 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 5.3 |
+
+**Agent readiness 24.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/starwood-hotels-and-resorts/](https://apis.io/providers/starwood-hotels-and-resorts/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Starwood Hotels and Resorts: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/starwood-hotels-and-resorts/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
